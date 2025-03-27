@@ -1,4 +1,5 @@
 import {
+  GradeResponse,
   GradingScriptResult,
   RegressionTestRunResponse,
   SubmissionResponse
@@ -10,7 +11,7 @@ export async function submitFeedback(
   queryParams?: {
     autograder_regression_test_id?: number
   }
-): Promise<GradingScriptResult> {
+): Promise<GradeResponse> {
   const gradingServerURL = getInput('grading_server')
   const response = await fetch(
     `${gradingServerURL}/functions/v1/autograder-submit-feedback${
@@ -30,7 +31,7 @@ export async function submitFeedback(
   if (!response.ok) {
     throw new Error(`Failed to submit feedback: ${response.statusText}`)
   }
-  return response.json() as Promise<GradingScriptResult>
+  return response.json() as Promise<GradeResponse>
 }
 
 export async function createSubmission(token: string) {
