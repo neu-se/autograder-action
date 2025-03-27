@@ -9,7 +9,7 @@ import {
   createRegressionTestRun,
   createSubmission,
   submitFeedback
-} from './api/adminServiceComponents.js'
+} from './SupabaseAPI.js'
 import grade from './grader/Grader.js'
 
 async function downloadTarballAndExtractTo(url: string, dir: string) {
